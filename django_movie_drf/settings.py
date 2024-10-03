@@ -14,6 +14,10 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+
+dotenv_path = os.path.join(os.path.dirname(__name__), '.env.dev')
+load_dotenv(dotenv_path=dotenv_path)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#scvy(7xwplv$-rcrj$&j)wh0ulpu&__chh-!j)6!a#-#&l+r_'
+SECRET_KEY = os.environ.get("SECRET_KEY", '123')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
